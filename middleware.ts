@@ -1,10 +1,9 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-export default clerkMiddleware();
+export function middleware() {
+  return NextResponse.next();
+}
 
 export const config = {
-  matcher: [
-    "/((?!_next|.*\\.(?:html?|css|js(?!on)|jpe?g|png|gif|svg|ico|webp|ttf|woff2?|eot)).*)",
-    "/(api|trpc)(.*)",
-  ],
+  matcher: ["/((?!_next|.*\\.(?:.*)).*)"],
 };
